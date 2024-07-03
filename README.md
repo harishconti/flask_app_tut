@@ -1,2 +1,2 @@
-# flask_app_tut
-repo for flask app deployment 
+# flask_tut
+Flask app and more with flask
