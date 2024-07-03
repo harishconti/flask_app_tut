@@ -1,0 +1,29 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Python Engineer",
+      "location": "Bengaluru",
+      "salary": "Rs 20,00,000"
+    },
+    {
+      "id": 2,
+      "title": "Data Engineer",
+      "location": "Hyderabad",
+      "salary": "Rs 15,00,000"
+
+    },
+    {
+      "id": 3,
+      "title": "Data Scientist",
+      "location": "New York",
+      "salary": "$ 100,00,000"
+    },
+    {
+      "id": 4,
+      "title": "Data Scientist",
+      "location": "Remote"
+
+    }
+  ]
+}
