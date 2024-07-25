@@ -1,15 +1,14 @@
-<div class="container-xxl border-bottom text-start row" style="padding-bottom: 8px">
+<div class="container-xxl border-bottom row" style="padding-bottom: 8px">
         <div class="col-9">
-        <h4 style="color: dimgrey; margin-bottom: 16px">{{job['title']}}</h4>
+        <h4 style="color: dimgrey; margin-bottom: 16px">{{jobs.title[job]}}</h4>
         <div>
-            <b>Location:</b> {{job['location']}}
+            <b>Location:</b> {{jobs.location[job]}}
         </div>
         <div>
-            <b>Salary:</b>{% if 'salary' in job %}
-            {{job['salary']}} {% endif %}
+            <b>Salary:</b> {{jobs.currency[job]}} {{jobs.salary[job]}}
         </div>
         </div>
         <div class=" col-3" style="padding-top: 30px">
-        <button type="button" class="btn btn-outline-primary" >Apply</button>
+        <a href="mailto:name@email.com?subject=Applying%20for%20{{job['title']}}" type="button" class="btn btn-outline-primary" >Apply</a>
         </div>
 </div>

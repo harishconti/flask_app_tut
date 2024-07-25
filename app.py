@@ -1,24 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import json
+from modules.db_reader import query_df
 
 app = Flask(__name__)
 json_path = r'temp/emp_data.json'
 
 
-def json_data(path):
-    with open(path) as data_file:
-        data = json.load(data_file)['jobs']
+def job_data():
+    with open('modules/query.txt', 'r') as f:
+        query = f.read()
+    data = query_df(query)
+    # print(data)
     return data
-
+# job_data()
 
 @app.route('/')
 def hello_world():
-    return render_template("home.html", jobs=json_data(json_path))
+    return render_template("home.html", jobs=job_data(), len=len(job_data()))
 
 
 @app.route('/api/jobs')
 def list_jobs():
-    return json_data(json_path)
+    data = job_data()
+    json_data = data.to_json(orient='records')
+    json_data = json.loads(json_data)
+    return jsonify(json_data)
 
 
 if __name__ == '__main__':
