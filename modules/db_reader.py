@@ -22,11 +22,11 @@ def getconn() -> mysql.connector.MySQLConnection:
 # Connect to the database
 
 
-def query_df(query):
+def query_df(query, values=None):
     try:
         with getconn() as mydb:
             cursor = mydb.cursor()
-            cursor.execute(query)
+            cursor.execute(query,values)
             columns = [desc[0] for desc in cursor.description]  # Get column names
             data = cursor.fetchall()
 
@@ -49,6 +49,12 @@ def query_update_table(query):
         print(f"Error: {err}")
 
 
+def job_data_with_id(id):
+    query = "select * From job_data WHERE id = %s"
+    data = query_df(query,(id,))
+    return data
+
+
 query = "select * From job_data"
 # with open('query.txt') as f:
 #     new_query = f.read()
@@ -56,5 +62,3 @@ query = "select * From job_data"
 # data = query_df(query)
 # print(data)
 # query_update_table(new_query)
-# data = query_df(query)
-# print(data)
