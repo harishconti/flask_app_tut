@@ -21,15 +21,18 @@
                             <strong>Location:</strong> {{ job['location'] }}<br>
                             <strong>Salary:</strong> {{ job['salary'] }}<br>
                         </p>
+                        <h3>Description:</h3>
                         <p class="card-text">{{ job['description'] }}</p>
-                        <a href="/" class="btn btn-primary">Apply Now</a>
+                        {% include 'application_form.html' %}
+
                     </div>
                 </div>
             {% endfor %}
         {% else %}
             <p class="lead mt-5">Job not found.</p>
         {% endif %}
-    {% include 'footer.html' %}
     </div>
+
+    {% include 'footer.html' %}
 </body>
 </html>
