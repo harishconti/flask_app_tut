@@ -1,0 +1,18 @@
+<style>
+/* In your external stylesheet (e.g., styles.css) */
+.banner-container {
+    width: 100%; /* Ensure the banner spans the full width */
+    margin-bottom: 16px; /* Add spacing below the banner */
+}
+
+#banner {
+    display: block; /* Prevent extra space below the image */
+    width: 100%; /* Ensure the image fills the container */
+    height: auto;  /* Maintain aspect ratio while resizing */
+    object-fit: cover; /* Cover the container without distortion */
+}
+
+</style>
+<div class="banner-container">
+    <img src="{{ url_for('static', filename='job_banner.jpg') }}" class="img-fluid" alt="Job Banner" id="banner">
+</div>

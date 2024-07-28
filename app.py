@@ -9,6 +9,7 @@ json_path = r'temp/emp_data.json'
 def job_data():
     with open('modules/query.txt', 'r') as f:
         query = f.read()
+        # print(query)
     data = query_df(query)
     # print(data)
     return data
@@ -32,7 +33,11 @@ def list_jobs():
 @app.route('/job/<id>')
 def show_job(id):
     data = job_data_with_id(id)
-    return jsonify(json.loads(data.to_json(orient='records')))
+    data = json.loads(data.to_json(orient='records'))
+    if not data:
+        # return jsonify({'error': 'No such job'}), 404
+        return "Not Found", 404
+    return render_template('jobpage.html', jobs=data)
 
 
 if __name__ == '__main__':
