@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Details</title>
+    {% include 'bootstrap.html' %}
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'banner.html' %}
+    <div class="container">
+    <h1 >New Careers Portal</h1>
+        <h2 class="mt-5">Job Details</h2>
+
+        {% if jobs %}
+            {% for job in jobs %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ job['title'] }}</h3>
+                        <h5 class="card-subtitle mb-2 text-muted">{{ job['company'] }}</h5>
+                        <p class="card-text">
+                            <strong>Location:</strong> {{ job['location'] }}<br>
+                            <strong>Salary:</strong> {{ job['salary'] }}<br>
+                        </p>
+                        <p class="card-text">{{ job['description'] }}</p>
+                        <a href="/" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="lead mt-5">Job not found.</p>
+        {% endif %}
+    {% include 'footer.html' %}
+    </div>
+</body>
+</html>
