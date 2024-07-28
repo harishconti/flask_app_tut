@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import json
-from modules.db_reader import query_df, job_data_with_id
+from modules.db_reader import query_df, job_data_with_id, add_application_db
 
 app = Flask(__name__)
 json_path = r'temp/emp_data.json'
@@ -38,6 +38,18 @@ def show_job(id):
         # return jsonify({'error': 'No such job'}), 404
         return "Not Found", 404
     return render_template('jobpage.html', jobs=data)
+
+
+@app.route('/job/<id>/apply', methods=['GET', 'POST'])
+def apply_job(id):
+    if request.method == 'POST':
+        data = request.form.to_dict()  # Use request.form for POST data
+        job = job_data_with_id(id)
+        add_application_db(id, data)
+        # print(data)
+        return render_template('application_submitted.html', application=data, job=job)
+    else:  # GET request
+        return render_template('application_form.html', job_id=id)
 
 
 if __name__ == '__main__':

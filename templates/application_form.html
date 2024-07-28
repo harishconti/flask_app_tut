@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application Form</title>
+    {% include 'bootstrap.html' %}
+</head>
+<body>
+    <div class="container mt-5">
+        <h4 class="mb-3">Application Form</h4>
+
+        <form action="/job/{{ job['id'] }}/apply" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Batman" required>
+            </div>
+            <div class="form-group">
+                <label for="email_id">Email</label>
+                <input type="email" class="form-control" id="email_id" name="email_id" placeholder="batman@gotham.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="123-456-7890">
+            </div>
+            <div class="form-group">
+                <label for="resume">Resume/CV Link</label>
+                <input type="url" class="form-control" id="resume" name="resume" placeholder="resume@batman.com">
+            </div>
+            <div class="form-group">
+                <label for="cover_letter">Cover Letter (Optional)</label>
+                <textarea class="form-control" id="cover_letter" name="cover_letter" rows="3"></textarea>
+            </div>
+
+            <hr> <div class="form-group">
+                <label for="education">Education</label>
+                <textarea class="form-control" id="education" name="education" rows="3" placeholder="School Name, Degree, Years Attended"></textarea>
+            </div>
+
+            <hr> <div class="form-group">
+                <label for="work_experience">Work Experience</label>
+                <textarea class="form-control" id="work_experience" name="work_experience" rows="5" placeholder="Company, Title, Dates, Responsibilities"></textarea>
+            </div>
+
+            <hr> <div class="form-group">
+                <label for="linkedin_profile">LinkedIn Profile URL (Optional)</label>
+                <input type="url" class="form-control" id="linkedin_profile" name="linkedin_profile" placeholder="https://www.linkedin.com/in/yourprofile">
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

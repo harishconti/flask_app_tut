@@ -67,3 +67,31 @@ def job_data_with_id(id):
 # data = query_df(query)
 # print(data)
 # query_update_table(new_query)
+
+
+def add_application_db(job_id, data):
+    try:
+        with getconn() as mydb:
+            cursor = mydb.cursor()
+            query = ("INSERT INTO applications "
+                     "(job_id, full_name, email, phone, linkedin_url, education, work_experience, resume_url, cover_letter) "  # Corrected to include phone and cover_letter
+                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")  # Nine placeholders
+
+            values = (
+                job_id,
+                data.get("full_name"),  # Use .get() for safety
+                data.get("email_id"),
+                data.get("phone"),  # Added phone
+                data.get("linkedin_profile"),
+                data.get("education"),
+                data.get("work_experience"),
+                data.get("resume"),
+                data.get("cover_letter")  # Added cover_letter
+            )
+            cursor.execute(query, values)  # Pass values as a tuple
+            mydb.commit()
+            print("Record updated successfully")
+    except mysql.connector.Error as err:
+        import logging  # Add logging
+        logging.error(f"Error inserting application into database: {err}")
+        return None

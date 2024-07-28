@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'bootstrap.html' %}
+    <title>Application Submitted</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    {% include 'banner.html' %}
+    <div class="container mt-5">
+        <div class="application-details">
+            <h2 class="text-center mb-4">Your Application for <b>"{{ job.title[0] }}"</b>  has been submitted!</h2>
+
+            <h4>Full Name</h4>
+            <p>{{ application['full_name'] }}</p>
+
+            <h4>Email</h4>
+            <p>{{ application['email_id'] }}</p>
+
+            <h4>Phone Number</h4>
+            <p>{{ application['phone'] }}</p>
+
+            <h4>Resume Link</h4>
+            <p><a href="{{ application['resume'] }}" target="_blank">{{ application['resume'] }}</a></p>
+
+            <h4>Work Experience</h4>
+            <p>{{ application['work_experience'] }}</p>
+
+            <h4>LinkedIn Profile</h4>
+            <p><a href="{{ application['linkedin_profile'] }}" target="_blank">{{ application['linkedin_profile'] }}</a></p>
+
+            <h4>Education</h4>
+            <p>{{ application['education'] }}</p>
+
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>
